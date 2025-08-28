@@ -45,6 +45,11 @@
 \usepackage{tabularx} % Untuk mengatur kolom, seperti grid pada CSS
 \usepackage{wrapfig}
 \usepackage{float}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+% Package untuk code listings
+\usepackage{listings}
+\usepackage{xcolor}
 
 % Pengaturan format daftar isi, daftar gambar, dan daftar tabel
 \usepackage[titles]{tocloft}
@@ -109,6 +114,27 @@
 % Mengganti figure dan table menjadi gambar dan tabel
 \renewcommand{\figurename}{Gambar}
 \renewcommand{\tablename}{Tabel}
+\renewcommand{\lstlistingname}{Kode Sumber}
+
+% Pengaturan styling untuk code listings
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!10},
+    commentstyle=\color{green!60!black},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    captionpos=b,
+    xleftmargin=2em,
+    framexleftmargin=1.5em
+}
 
 \input{pustaka/tanda-hubung.tex}
 
@@ -158,6 +184,13 @@
     \renewcommand*\listtablename{DAFTAR TABEL}
     \addcontentsline{toc}{chapter}{\listtablename}
     \listoftables
+    \cleardoublepage
+
+    % Daftar kode sumber
+    \phantomsection
+    \renewcommand*\lstlistlistingname{DAFTAR KODE SUMBER}
+    \addcontentsline{toc}{chapter}{\lstlistlistingname}
+    \lstlistoflistings
     \cleardoublepage
   \end{spacing}
 
