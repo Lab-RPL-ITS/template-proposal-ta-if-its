@@ -145,14 +145,6 @@ Atau gunakan `latexmk` untuk kompilasi otomatis:
 latexmk -pdf main.tex
 ```
 
-## Contoh Penggunaan Template
-
-Berikut adalah daftar repositori yang menggunakan template ini:
-
-- [threeal/proposal-ta-simulasi-robot](https://github.com/threeal/proposal-ta-simulasi-robot) - Simulasi robot berbasis AI
-
-Jika Anda menggunakan template ini, silakan buat pull request untuk menambahkan repositori Anda ke daftar di atas.
-
 ## Kontribusi
 
 Kontribusi untuk pengembangan template ini sangat diterima. Silakan:
