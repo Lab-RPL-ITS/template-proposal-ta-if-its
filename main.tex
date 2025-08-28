@@ -15,7 +15,7 @@
 \author{Musk, Elon Reeve}
 
 % Pengaturan detail pada file PDF
-\usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
+\usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0},linktoc=all]{hyperref}
 
 
 % Pengaturan ukuran indentasi
@@ -28,7 +28,10 @@
 % Pengaturan jenis karakter
 \usepackage[utf8]{inputenc}
 
+\usepackage{url}
 \usepackage[style=apa, backend=biber]{biblatex}
+\usepackage{xurl}
+
 \usepackage{enumitem} % Pembuatan list
 \usepackage{lipsum} % Pembuatan template kalimat
 \usepackage{graphicx} % Input gambar
@@ -45,19 +48,30 @@
 
 % Pengaturan format daftar isi, daftar gambar, dan daftar tabel
 \usepackage[titles]{tocloft}
+% Definisi command untuk list of listings
+\newcommand{\cftloctitlefont}{}
+\newcommand{\cftafterloctitle}{}
 \setlength{\cftsecindent}{2em}
-\setlength{\cftsubsecindent}{2em}
+\setlength{\cftsubsecindent}{3em}
+\setlength{\cftsubsubsecindent}{4em}
 \setlength{\cftbeforechapskip}{1.5ex}
-\setlength{\cftbeforesecskip}{1.5ex}
+\setlength{\cftbeforesecskip}{1ex}
+\setlength{\cftbeforesubsecskip}{1ex}
+\setlength{\cftbeforesubsubsecskip}{1ex}
 \setlength{\cftbeforetoctitleskip}{0cm}
-\setlength{\cftbeforeloftitleskip}{0cm}
+\setlength{\cftbeforeloftitleskip}{4ex}
+\setlength{\cftafterloftitleskip}{0cm}
 \setlength{\cftbeforelottitleskip}{0cm}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
 \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries} % command untuk membuat heading bold dan besar
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftlottitlefont}{\hfill\Large\bfseries}
 \renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftloctitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloctitle}{\hfill}
 
 % Definisi untuk "Hati ini sengaja dikosongkan"
 \patchcmd{\cleardoublepage}{\hbox{}}{
@@ -66,7 +80,7 @@
   \begin{center}\textit{[Halaman ini sengaja dikosongkan]}\end{center}
   \vfill}{}{}
 
-  % Pengaturan penomoran halaman
+% Pengaturan penomoran halaman
 \usepackage{fancyhdr}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
@@ -81,11 +95,13 @@
 \titleformat{\chapter}[hang]{\centering\bfseries\large}{BAB\ \arabic{chapter}\ }{0ex}{\vspace{0ex}\centering}
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
 \titlespacing{\chapter}{0ex}{0ex}{4ex}
 \titlespacing{\section}{0ex}{1ex}{0ex}
 \titlespacing{\subsection}{0ex}{0.5ex}{0ex}
 \titlespacing{\subsubsection}{0ex}{0.5ex}{0ex}
-\setcounter{secnumdepth}{3} % Untuk memberi penomoran pada \subsubsection
+\setcounter{secnumdepth}{4} % Untuk memberi penomoran pada \subsubsection
+\setcounter{tocdepth}{4}
 
 \counterwithin{figure}{chapter}
 \counterwithin{table}{chapter}
@@ -122,20 +138,23 @@
   \input{lainnya/abstrak-en.tex}
   \cleardoublepage
 
-  \begin{spacing}{1.5}
-    % Daftar isi
+  \begin{spacing}{1}
+    % Daftar Isi
+    \phantomsection
     \renewcommand*\contentsname{DAFTAR ISI}
     \addcontentsline{toc}{chapter}{\contentsname}
     \tableofcontents
     \cleardoublepage
 
     % Daftar gambar
+    \phantomsection
     \renewcommand*\listfigurename{DAFTAR GAMBAR}
     \addcontentsline{toc}{chapter}{\listfigurename}
     \listoffigures
     \cleardoublepage
 
     % Daftar tabel
+    \phantomsection
     \renewcommand*\listtablename{DAFTAR TABEL}
     \addcontentsline{toc}{chapter}{\listtablename}
     \listoftables
